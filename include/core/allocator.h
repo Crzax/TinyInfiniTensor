@@ -9,8 +9,7 @@
 #include <unordered_set>
 
 namespace infini {
-  class Allocator
-  {
+class Allocator {
   private:
     Runtime runtime;
 
@@ -18,10 +17,14 @@ namespace infini {
 
     size_t peak;
 
+    size_t max_peak;
+
     size_t alignment;
 
     // pointer to the memory actually allocated
     void *ptr;
+
+    std::map<size_t, size_t> free_blocks;
 
     // =================================== 作业 ===================================
     // TODO：可能需要设计一个数据结构来存储free block，以便于管理和合并
@@ -55,5 +58,5 @@ namespace infini {
     // function: memory alignment, rouned up
     // return: size of the aligned memory block
     size_t getAlignedSize(size_t size);
-  };
-}
+};
+} // namespace infini
